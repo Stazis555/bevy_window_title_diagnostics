@@ -1,18 +1,16 @@
-use std::ops::Add;
-
 use bevy::core::{Time, Timer};
 use bevy::diagnostic::{Diagnostic, DiagnosticId, Diagnostics};
 use bevy::prelude::{App, CoreStage, Plugin, Res, ResMut};
 use bevy::utils::Duration;
 use bevy::window::Windows;
 
-/// An App Plugin that logs diagnostics to the console
+/// An App Plugin that logs diagnostics to the primary window's title
 pub struct WindowTitleLoggerDiagnosticsPlugin {
     pub wait_duration: Duration,
     pub filter: Option<Vec<DiagnosticId>>,
 }
 
-/// State used by the [`LogDiagnosticsPlugin`]
+/// State used by the [`WindowTitleLoggerDiagnosticsPlugin`]
 struct WindowTitleLoggerState {
     timer: Timer,
     filter: Option<Vec<DiagnosticId>>,
@@ -69,11 +67,11 @@ impl WindowTitleLoggerDiagnosticsPlugin {
 
             if let Some(ref filter) = state.filter {
                 for diagnostic in filter.iter().map(|id| diagnostics.get(*id).unwrap()) {
-                    title = title.add(&Self::format(diagnostic));
+                    title = title + &Self::format(diagnostic);
                 }
             } else {
                 for diagnostic in diagnostics.iter() {
-                    title = title.add(&Self::format(diagnostic));
+                    title = title + &Self::format(diagnostic);
                 }
             }
 
