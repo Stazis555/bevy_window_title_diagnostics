@@ -7,7 +7,6 @@ repository = "https://github.com/Stazis555/bevy_window_title_diagnostics"
 homepage = "https://github.com/Stazis555/bevy_window_title_diagnostics"
 readme = "README.md"
 license = "MIT"
-license-file = "LICENSE"
 keywords = ["bevy", "diagnostic", "game", "log", "fps"]
 categories  = ["game-engines"]
 
