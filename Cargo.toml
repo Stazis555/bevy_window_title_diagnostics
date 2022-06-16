@@ -2,6 +2,14 @@
 name = "bevy_window_title_diagnostics"
 version = "0.1.0"
 edition = "2021"
+description = "Logs Bevy diagnostics into the primary window title"
+repository = "https://github.com/Stazis555/bevy_window_title_diagnostics"
+homepage = "https://github.com/Stazis555/bevy_window_title_diagnostics"
+readme = "README.md"
+license = "MIT"
+license-file = "LICENSE"
+keywords = ["bevy", "diagnostic", "game", "log", "fps"]
+categories  = ["game-engines"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
