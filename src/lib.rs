@@ -1,6 +1,6 @@
-use bevy::core::{Time, Timer};
 use bevy::diagnostic::{Diagnostic, DiagnosticId, Diagnostics};
 use bevy::prelude::{App, CoreStage, Plugin, Res, ResMut};
+use bevy::time::{Time, Timer};
 use bevy::utils::Duration;
 use bevy::window::Windows;
 
