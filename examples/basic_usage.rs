@@ -7,10 +7,13 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .add_plugin(FrameTimeDiagnosticsPlugin)
+        // Insert same way as usual LogDiagnosticsPlugin
         .add_plugin(WindowTitleLoggerDiagnosticsPlugin {
+            // It is possible to filter Diagnostics same way as default LogDiagnosticsPlugin
             // filter: Some(vec![FrameTimeDiagnosticsPlugin::FPS]),
             ..Default::default()
         })
+        // Works with any diagnostics
         // .add_plugin(bevy::diagnostic::EntityCountDiagnosticsPlugin::default())
         .run();
 }

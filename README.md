@@ -46,7 +46,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+    commands.spawn_bundle(Camera2dBundle::new_with_far(10.0));
     commands.spawn_bundle(SpriteBundle {
         sprite: Sprite {
             color: Color::CYAN,
@@ -56,7 +56,6 @@ fn setup(mut commands: Commands) {
         ..default()
     });
 }
-
 ```
 
 # Notes
