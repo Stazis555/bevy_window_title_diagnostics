@@ -1,5 +1,5 @@
 use bevy::diagnostic::{Diagnostic, DiagnosticId, Diagnostics};
-use bevy::prelude::{App, CoreStage, Plugin, Res, ResMut};
+use bevy::prelude::{App, CoreStage, Plugin, Res, ResMut, Resource};
 use bevy::time::{Time, Timer};
 use bevy::utils::Duration;
 use bevy::window::Windows;
@@ -11,6 +11,7 @@ pub struct WindowTitleLoggerDiagnosticsPlugin {
 }
 
 /// State used by the [`WindowTitleLoggerDiagnosticsPlugin`]
+#[derive(Resource)]
 struct WindowTitleLoggerState {
     timer: Timer,
     filter: Option<Vec<DiagnosticId>>,
@@ -28,7 +29,7 @@ impl Default for WindowTitleLoggerDiagnosticsPlugin {
 impl Plugin for WindowTitleLoggerDiagnosticsPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(WindowTitleLoggerState {
-            timer: Timer::new(self.wait_duration, true),
+            timer: Timer::new(self.wait_duration, bevy::time::TimerMode::Repeating),
             filter: self.filter.clone(),
         });
 

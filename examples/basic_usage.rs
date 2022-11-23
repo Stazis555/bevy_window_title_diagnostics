@@ -19,8 +19,8 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn_bundle(Camera2dBundle::new_with_far(10.0));
-    commands.spawn_bundle(SpriteBundle {
+    commands.spawn(Camera2dBundle::new_with_far(10.0));
+    commands.spawn(SpriteBundle {
         sprite: Sprite {
             color: Color::CYAN,
             custom_size: Some(Vec2::new(50.0, 50.0)),

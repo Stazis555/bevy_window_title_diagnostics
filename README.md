@@ -8,15 +8,15 @@ Made for little bit more convenient usage of the FrameTimeDiagnosticsPlugin
 
 Add to your `Cargo.toml`
 
-For bevy 0.7:
-```rust
-bevy_window_title_diagnostics = 0.1
-
-```
-
 For bevy 0.8:
 ```rust
 bevy_window_title_diagnostics = 0.2
+
+```
+
+For bevy 0.9:
+```rust
+bevy_window_title_diagnostics = 0.3
 
 ```
 
@@ -46,8 +46,8 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn_bundle(Camera2dBundle::new_with_far(10.0));
-    commands.spawn_bundle(SpriteBundle {
+    commands.spawn(Camera2dBundle::new_with_far(10.0));
+    commands.spawn(SpriteBundle {
         sprite: Sprite {
             color: Color::CYAN,
             custom_size: Some(Vec2::new(50.0, 50.0)),
@@ -59,4 +59,4 @@ fn setup(mut commands: Commands) {
 ```
 
 # Notes
-Tested on `bevy=0.7` and `bevy=0.8`
+Tested on `bevy=0.8` and `bevy=0.9`
