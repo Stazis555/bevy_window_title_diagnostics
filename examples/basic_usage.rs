@@ -24,7 +24,7 @@ fn setup(mut commands: Commands) {
         sprite: Sprite {
             color: Color::CYAN,
             custom_size: Some(Vec2::new(50.0, 50.0)),
-            ..Default::default()
+            ..default()
         },
         ..default()
     });

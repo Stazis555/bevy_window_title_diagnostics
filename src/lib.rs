@@ -1,8 +1,9 @@
 use bevy::diagnostic::{Diagnostic, DiagnosticId, Diagnostics};
-use bevy::prelude::{App, CoreStage, Plugin, Res, ResMut, Resource};
+use bevy::prelude::*;
 use bevy::time::{Time, Timer};
 use bevy::utils::Duration;
-use bevy::window::Windows;
+use bevy::window::Window;
+// use bevy::window::Windows;
 
 /// An App Plugin that logs diagnostics to the primary window's title
 pub struct WindowTitleLoggerDiagnosticsPlugin {
@@ -33,7 +34,7 @@ impl Plugin for WindowTitleLoggerDiagnosticsPlugin {
             filter: self.filter.clone(),
         });
 
-        app.add_system_to_stage(CoreStage::PostUpdate, Self::log_diagnostics_system);
+        app.add_system(Self::log_diagnostics_system.in_base_set(CoreSet::PostUpdate));
     }
 }
 
@@ -61,7 +62,7 @@ impl WindowTitleLoggerDiagnosticsPlugin {
         mut state: ResMut<WindowTitleLoggerState>,
         time: Res<Time>,
         diagnostics: Res<Diagnostics>,
-        mut windows: ResMut<Windows>,
+        mut windows: Query<&mut Window>,
     ) {
         if state.timer.tick(time.delta()).finished() {
             let mut title = String::new();
@@ -76,9 +77,9 @@ impl WindowTitleLoggerDiagnosticsPlugin {
                 }
             }
 
-            windows
-                .primary_mut()
-                .set_title(title[0..title.len() - 1].to_owned());
+            if let Some(mut window) = windows.iter_mut().next() {
+                window.title = title[0..title.len() - 1].to_owned();
+            }
         }
     }
 }

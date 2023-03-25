@@ -8,17 +8,12 @@ Made for little bit more convenient usage of the FrameTimeDiagnosticsPlugin
 
 Add to your `Cargo.toml`
 
-For bevy 0.8:
+For bevy 0.10:
 ```rust
-bevy_window_title_diagnostics = 0.2
+bevy_window_title_diagnostics = 0.4
 
 ```
 
-For bevy 0.9:
-```rust
-bevy_window_title_diagnostics = 0.3
-
-```
 
 # Usage
 
@@ -51,12 +46,16 @@ fn setup(mut commands: Commands) {
         sprite: Sprite {
             color: Color::CYAN,
             custom_size: Some(Vec2::new(50.0, 50.0)),
-            ..Default::default()
+            ..default()
         },
         ..default()
     });
 }
 ```
 
-# Notes
-Tested on `bevy=0.8` and `bevy=0.9`
+# Bevy compatibility table
+Bevy version | bevy_window_title_diagnostics version
+--- | ---
+0.8 | 0.2
+0.9 | 0.3
+0.10 | 0.4
