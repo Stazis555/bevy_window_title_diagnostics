@@ -1,4 +1,4 @@
-use bevy::diagnostic::{Diagnostic, DiagnosticId, Diagnostics};
+use bevy::diagnostic::{Diagnostic, DiagnosticId, DiagnosticsStore};
 use bevy::prelude::*;
 use bevy::time::{Time, Timer};
 use bevy::utils::Duration;
@@ -34,7 +34,7 @@ impl Plugin for WindowTitleLoggerDiagnosticsPlugin {
             filter: self.filter.clone(),
         });
 
-        app.add_system(Self::log_diagnostics_system.in_base_set(CoreSet::PostUpdate));
+        app.add_systems(PostUpdate, Self::log_diagnostics_system);
     }
 }
 
@@ -61,7 +61,7 @@ impl WindowTitleLoggerDiagnosticsPlugin {
     fn log_diagnostics_system(
         mut state: ResMut<WindowTitleLoggerState>,
         time: Res<Time>,
-        diagnostics: Res<Diagnostics>,
+        diagnostics: Res<DiagnosticsStore>,
         mut windows: Query<&mut Window>,
     ) {
         if state.timer.tick(time.delta()).finished() {

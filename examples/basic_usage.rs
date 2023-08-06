@@ -5,16 +5,18 @@ use bevy_window_title_diagnostics::WindowTitleLoggerDiagnosticsPlugin;
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_startup_system(setup)
-        .add_plugin(FrameTimeDiagnosticsPlugin)
-        // Insert same way as usual LogDiagnosticsPlugin
-        .add_plugin(WindowTitleLoggerDiagnosticsPlugin {
-            // It is possible to filter Diagnostics same way as default LogDiagnosticsPlugin
-            // filter: Some(vec![FrameTimeDiagnosticsPlugin::FPS]),
-            ..Default::default()
-        })
-        // Works with any diagnostics
-        // .add_plugin(bevy::diagnostic::EntityCountDiagnosticsPlugin::default())
+        .add_systems(Startup, setup)
+        .add_plugins((
+            FrameTimeDiagnosticsPlugin,
+            // Insert same way as usual LogDiagnosticsPlugin
+            WindowTitleLoggerDiagnosticsPlugin {
+                // It is possible to filter Diagnostics same way as default LogDiagnosticsPlugin
+                // filter: Some(vec![FrameTimeDiagnosticsPlugin::FPS]),
+                ..Default::default()
+            },
+            // Works with any diagnostics
+            //bevy::diagnostic::EntityCountDiagnosticsPlugin::default(),
+        ))
         .run();
 }
 
