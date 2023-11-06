@@ -8,10 +8,10 @@ Made for little bit more convenient usage of the FrameTimeDiagnosticsPlugin
 
 Add to your `Cargo.toml`
 
-For bevy 0.11:
+For bevy 0.12:
 
 ```rust
-bevy_window_title_diagnostics = 0.5
+bevy_window_title_diagnostics = 0.6
 
 ```
 
@@ -61,3 +61,4 @@ fn setup(mut commands: Commands) {
 | 0.9          | 0.3                                   |
 | 0.10         | 0.4                                   |
 | 0.11         | 0.5                                   |
+| 0.12         | 0.6                                   |
