@@ -11,7 +11,7 @@ Add to your `Cargo.toml`
 For bevy 0.12:
 
 ```rust
-bevy_window_title_diagnostics = 0.6
+bevy_window_title_diagnostics = 0.12
 
 ```
 
@@ -61,4 +61,6 @@ fn setup(mut commands: Commands) {
 | 0.9          | 0.3                                   |
 | 0.10         | 0.4                                   |
 | 0.11         | 0.5                                   |
-| 0.12         | 0.6                                   |
+| 0.12         | 0.6 || 0.12                           |
+
+Starting from bevy 0.12 library will have the same semantic version as bevy
