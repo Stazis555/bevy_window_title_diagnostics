@@ -1,4 +1,4 @@
-use bevy::diagnostic::{Diagnostic, DiagnosticId, DiagnosticsStore};
+use bevy::diagnostic::{Diagnostic, DiagnosticPath, DiagnosticsStore};
 use bevy::prelude::*;
 use bevy::time::{Time, Timer};
 use bevy::utils::Duration;
@@ -8,14 +8,14 @@ use bevy::window::Window;
 /// An App Plugin that logs diagnostics to the primary window's title
 pub struct WindowTitleLoggerDiagnosticsPlugin {
     pub wait_duration: Duration,
-    pub filter: Option<Vec<DiagnosticId>>,
+    pub filter: Option<Vec<DiagnosticPath>>,
 }
 
 /// State used by the [`WindowTitleLoggerDiagnosticsPlugin`]
 #[derive(Resource)]
 struct WindowTitleLoggerState {
     timer: Timer,
-    filter: Option<Vec<DiagnosticId>>,
+    filter: Option<Vec<DiagnosticPath>>,
 }
 
 impl Default for WindowTitleLoggerDiagnosticsPlugin {
@@ -39,7 +39,7 @@ impl Plugin for WindowTitleLoggerDiagnosticsPlugin {
 }
 
 impl WindowTitleLoggerDiagnosticsPlugin {
-    pub fn filtered(filter: Vec<DiagnosticId>) -> Self {
+    pub fn filtered(filter: Vec<DiagnosticPath>) -> Self {
         WindowTitleLoggerDiagnosticsPlugin {
             filter: Some(filter),
             ..Default::default()
@@ -49,9 +49,9 @@ impl WindowTitleLoggerDiagnosticsPlugin {
     fn format(diagnostic: &Diagnostic) -> String {
         if let Some(value) = diagnostic.value() {
             if let Some(average) = diagnostic.average() {
-                return format!(" {}: {:.2} ({:.2}) |", diagnostic.name, value, average);
+                return format!(" {}: {:.2} ({:.2}) |", diagnostic.path(), value, average);
             } else {
-                return format!(" {}: {:.2} |", diagnostic.name, value);
+                return format!(" {}: {:.2} |", diagnostic.path(), value);
             }
         }
 
@@ -68,7 +68,7 @@ impl WindowTitleLoggerDiagnosticsPlugin {
             let mut title = String::new();
 
             if let Some(ref filter) = state.filter {
-                for diagnostic in filter.iter().map(|id| diagnostics.get(*id).unwrap()) {
+                for diagnostic in filter.iter().map(|path| diagnostics.get(path).unwrap()) {
                     title = title + &Self::format(diagnostic);
                 }
             } else {

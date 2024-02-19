@@ -15,7 +15,7 @@ fn main() {
                 ..Default::default()
             },
             // Works with any diagnostics
-            //bevy::diagnostic::EntityCountDiagnosticsPlugin::default(),
+            // bevy::diagnostic::EntityCountDiagnosticsPlugin::default(),
         ))
         .run();
 }
