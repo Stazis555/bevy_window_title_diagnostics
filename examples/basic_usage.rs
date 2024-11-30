@@ -21,13 +21,10 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::new_with_far(10.0));
-    commands.spawn(SpriteBundle {
-        sprite: Sprite {
-            color: Color::srgb(0.0, 0.0, 1.0),
-            custom_size: Some(Vec2::new(50.0, 50.0)),
-            ..default()
-        },
+    commands.spawn(Camera2d::default());
+    commands.spawn(Sprite {
+        color: Color::srgb(0.0, 0.0, 1.0),
+        custom_size: Some(Vec2::new(50.0, 50.0)),
         ..default()
     });
 }
