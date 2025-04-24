@@ -8,10 +8,10 @@ Made for little bit more convenient usage of the FrameTimeDiagnosticsPlugin
 
 Add to your `Cargo.toml`
 
-For bevy 0.15:
+For bevy 0.16:
 
 ```rust
-bevy_window_title_diagnostics = 0.15
+bevy_window_title_diagnostics = 0.16
 
 ```
 
@@ -29,7 +29,7 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .add_plugins((
-            FrameTimeDiagnosticsPlugin,
+            FrameTimeDiagnosticsPlugin::default(),
             // Insert same way as usual LogDiagnosticsPlugin
             WindowTitleLoggerDiagnosticsPlugin {
                 // It is possible to filter Diagnostics same way as default LogDiagnosticsPlugin
@@ -57,6 +57,7 @@ fn setup(mut commands: Commands) {
 
 | Bevy version | bevy_window_title_diagnostics version |
 | ------------ | ------------------------------------- |
+| 0.16         | 0.16                                  |
 | 0.15         | 0.15                                  |
 | 0.14         | 0.14                                  |
 | 0.13         | 0.13                                  |

@@ -1,8 +1,8 @@
 use bevy::diagnostic::{Diagnostic, DiagnosticPath, DiagnosticsStore};
 use bevy::prelude::*;
 use bevy::time::{Time, Timer};
-use bevy::utils::Duration;
 use bevy::window::Window;
+use core::time::Duration;
 // use bevy::window::Windows;
 
 /// An App Plugin that logs diagnostics to the primary window's title

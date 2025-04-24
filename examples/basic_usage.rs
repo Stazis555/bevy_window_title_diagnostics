@@ -7,7 +7,7 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .add_plugins((
-            FrameTimeDiagnosticsPlugin,
+            FrameTimeDiagnosticsPlugin::default(),
             // Insert same way as usual LogDiagnosticsPlugin
             WindowTitleLoggerDiagnosticsPlugin {
                 // It is possible to filter Diagnostics same way as default LogDiagnosticsPlugin
