@@ -64,7 +64,7 @@ impl WindowTitleLoggerDiagnosticsPlugin {
         diagnostics: Res<DiagnosticsStore>,
         mut windows: Query<&mut Window>,
     ) {
-        if state.timer.tick(time.delta()).finished() {
+        if state.timer.tick(time.delta()).is_finished() {
             let mut title = String::new();
 
             if let Some(ref filter) = state.filter {
